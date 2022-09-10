@@ -26,8 +26,8 @@ router.get('/u/:username', (req,res) => {
 
 // PATCH Update Tickets for a Given User
 router.patch('/u/:username', (req,res) => {
-    const username = req.params.username
-    const updateUserName = db.updateTicketByUsername(username,req.body)
+    const usernameId = req.params.username
+    const updateUserName = db.updateTicketByUsername(usernameId,req.body)
     res.status(200).json({message:"Succesfully Updated by Username", updateUserName})
 
 })
