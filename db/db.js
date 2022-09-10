@@ -102,12 +102,22 @@ class MyDB{
 
          updateTicketByUsername(findUsername,userbody) {
             const user = this.findByUsername(findUsername)
-            user.username =  userbody.findUsername ?? user.username
-            user.price = userbody.price ?? user.price
-            user.updateAt  = new Date()
+            user.map((ticket) => {
+                ticket.username =  userbody.username ?? ticket.username
+                ticket.price = userbody.price ?? ticket.price
+                ticket.updateAt  = new Date()
+            })
     
             return user
          }
+            //   delete data by username
+         deleteByName(name) {
+            this.tickets.forEach((ticket) => {
+                if (ticket.username === name) {
+                    this.tickets.splice(ticket, 1);
+                }
+            });
+        }
          
        /**
         * Delete Ticket From DB

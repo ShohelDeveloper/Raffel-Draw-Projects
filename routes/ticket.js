@@ -31,7 +31,11 @@ router.patch('/u/:username', (req,res) => {
     res.status(200).json({message:"Succesfully Updated by Username", updateUserName})
 
 })
-router.get('/u/:username', () => {})
+router.delete('/u/:username', (req, res) => {
+	const username = req.params.username;
+	db.deleteByName(username);
+	res.status(203).send();
+});
 
 
 router.post('/sell', (req,res) => {
